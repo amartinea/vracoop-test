@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="act_caht_par_jour">
+        <field name="name">CA HT / jour</field>
+        <field name="res_model">report.pos.order</field>
+        <field name="view_mode">graph</field>
+        <field name="context">{'graph_measure': 'price_total_ht', 'group_by': 'date:day'}</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_caht_par_categorie">
+        <field name="name">CA HT / catégorie</field>
+        <field name="res_model">report.pos.order</field>
+        <field name="view_mode">graph</field>
+        <field name="context">{'graph_measure': 'price_total_ht', 'group_by': 'pos_categ_id'}</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_marges_theoriques">
+        <field name="name">Marges théoriques / jour</field>
+        <field name="res_model">report.pos.order</field>
+        <field name="view_mode">graph</field>
+        <field name="context">{'graph_measure': 'margin_total', 'group_by': 'date:day'}</field>
+    </record>
+
+    <!--
+    <record model="ir.actions.act_window" id="act_taux_de_marges_theoriques">
+        <field name="name">Taux de marges théoriques / jour</field>
+        <field name="res_model">report.pos.order</field>
+        <field name="view_mode">graph</field>
+        <field name="context">{'graph_measure': 'margin_tx', 'group_by': 'date:day'}</field>
+    </record>
+    -->
+
+    
+    <menuitem id="caht_par_jour" parent="point_of_sale.menu_point_rep"
+        name="CA / jour" action="act_caht_par_jour"/>
+
+    <menuitem id="caht_par_categorie" parent="point_of_sale.menu_point_rep"
+        name="CA / catégorie" action="act_caht_par_categorie"/>
+
+    <menuitem id="marges_theoriques" parent="point_of_sale.menu_point_rep"
+        name="Marges théoriques" action="act_marges_theoriques"/>
+
+    <!--
+    <menuitem id="taux_de_marges_theoriques" parent="point_of_sale.menu_point_rep"
+        name="Taux de marges théoriques" action="act_taux_de_marges_theoriques"/>
+    -->
+
+</odoo>
