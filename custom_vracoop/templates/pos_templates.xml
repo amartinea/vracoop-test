@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright 2019 Coop IT Easy SCRLfs
+            Pierrick Brun <pierrick.brun@akretion.com>
+-->
+
+<odoo>
+    <template id="assets_frontend" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <link href="/custom_vracoop/static/src/css/pos.css" rel="stylesheet"/>
+            <script type="text/javascript" src="/custom_vracoop/static/src/js/tests.js"/>
+            <script type="text/javascript" src="/custom_vracoop/static/src/js/models.js"/>
+        </xpath>
+    </template>
+</odoo>

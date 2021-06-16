@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-extend="PosTicket">
+        <t t-jquery='.receipt-orderlines' t-operation='before'>
+            <div>
+                ----------------------
+            </div>
+        </t>
+        <t t-jquery='.receipt-orderlines' t-operation='after'>
+            <div>
+                ----------------------
+            </div>
+        </t>
+		<t t-jquery='.receipt-phone' t-operation='replace'>
+		</t>
+		<t t-jquery='.receipt-user' t-operation='replace'>
+			<t t-if='widget.pos.company.contact_address'>
+                <div><t t-esc='widget.pos.company.contact_address' /></div>
+            </t>
+            <t t-if='widget.pos.company.phone'>
+                <div>Tel:<t t-esc='widget.pos.company.phone' /></div>
+            </t>
+            <t t-if='widget.pos.company.vat'>
+                <div>VAT:<t t-esc='widget.pos.company.vat' /></div>
+            </t>
+            <t t-if='widget.pos.company.email'>
+                <div><t t-esc='widget.pos.company.email' /></div>
+            </t>
+            <t t-if='widget.pos.company.website'>
+                <div><t t-esc='widget.pos.company.website' /></div>
+            </t>
+            <t t-if='widget.pos.get_cashier()'>
+				<div>--------------------------------</div>
+				<div>Servi par <t t-esc='widget.pos.get_cashier().name' /></div>
+            </t>
+		</t>
+    </t>
+
+    <t t-extend="XmlReceipt">
+        <t t-jquery='.orderlines' t-operation='before'>
+            <div>
+                -----------------------------------
+            </div>
+        </t>
+        <t t-jquery='.orderlines' t-operation='after'>
+            <div>
+                -----------------------------------
+            </div>
+        </t>
+        <t t-jquery='.orderlines line right' t-operation='replace'>
+            <right>
+                <t t-esc='widget.format_currency(line.price_display)' />
+            </right>
+        </t>
+        <t t-jquery='.orderlines line left value:last-child' t-operation='replace'>
+            <t t-esc='widget.format_currency(line.price)' /><t t-if='!line.unit_name.startsWith("Unit")'>/<t t-esc='line.unit_name' /></t>
+        </t>
+        <t t-jquery='t[t-foreach=paymentlines] line right value' t-operation='replace'>
+            <t t-esc='widget.format_currency(line.get_amount())' />
+        </t>
+        <t t-jquery='t[t-foreach="receipt.tax_details"] line right t' t-operation='replace'>
+            <t t-esc='widget.format_currency(tax.amount)' />
+        </t>
+    </t>
+
+</templates>

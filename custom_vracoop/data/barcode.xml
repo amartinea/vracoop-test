@@ -1,0 +1,10 @@
+<odoo>
+    <record id="vracoop_barcode_rule" model="barcode.rule">
+        <field name="name">Container Barcodes</field>
+        <field name="barcode_nomenclature_id" ref="barcodes.default_barcode_nomenclature"/>
+        <field name="type">container</field>
+        <field name="encoding">ean13</field>
+        <field name="sequence">37</field>
+        <field name="pattern">049</field>
+    </record>
+</odoo>

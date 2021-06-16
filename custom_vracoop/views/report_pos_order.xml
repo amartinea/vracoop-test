@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_pos_order_pivot" model="ir.ui.view">
+        <field name="name">pos.order.pivot</field>
+        <field name="model">pos.order</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="amount_total" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="filter_orders_ca_article_mois" model="ir.filters">
+        <field name="name">CA / Article / Mois</field>
+        <field name="model_id">report.pos.order</field>
+        <field name="user_id" eval="False"/>
+        <field name="context">{'group_by': ['product_id', 'date'], 'measures': ['price_total']}</field>
+    </record>
+
+    <record id="filter_orders_ca_categ_mois" model="ir.filters">
+        <field name="name">CA / Catégorie / Mois</field>
+        <field name="model_id">report.pos.order</field>
+        <field name="user_id" eval="False"/>
+        <field name="context">{'group_by': ['pos_categ_id', 'date'], 'measures': ['price_total']}</field>
+    </record>
+
+    <record id="filter_orders_panier_moy" model="ir.filters">
+        <field name="name">Panier Moyen</field>
+        <field name="model_id">pos.order</field>
+        <field name="user_id" eval="False"/>
+        <field name="context">{'group_by': ['date'], 'measures': ['amount_total']}</field>
+    </record>
+
+    <record id="filter_orders_margin" model="ir.filters">
+        <field name="name">Marge</field>
+        <field name="model_id">report.pos.order</field>
+        <field name="user_id" eval="False"/>
+        <field name="context">{'group_by': ['date'], 'measures': ['price_total']}</field>
+    </record>
+
+</odoo>
